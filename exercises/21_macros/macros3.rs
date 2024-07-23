@@ -1,13 +1,18 @@
-// TODO: Fix the compiler error without taking the macro definition out of this
-// module.
 mod macros {
+    // Define the macro inside the module
     macro_rules! my_macro {
         () => {
             println!("Check out my macro!");
         };
     }
+
+    // Use the macro within the module scope
+    pub fn use_macro() {
+        my_macro!();
+    }
 }
 
 fn main() {
-    my_macro!();
+    // Call the function that uses the macro
+    macros::use_macro();
 }

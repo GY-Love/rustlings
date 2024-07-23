@@ -22,7 +22,7 @@ fn create_order_template() -> Order {
 }
 
 fn main() {
-    // You can optionally experiment here.
+    // 主函数可以留空或者在这里实验。
 }
 
 #[cfg(test)]
@@ -32,16 +32,22 @@ mod tests {
     #[test]
     fn your_order() {
         let order_template = create_order_template();
-
-        // TODO: Create your own order using the update syntax and template above!
-        // let your_order =
+        let your_order = Order {
+            name: String::from("Hacker in Rust"),
+            year: order_template.year, // 使用模板的年份
+            made_by_phone: order_template.made_by_phone, // 使用模板的联系方式
+            made_by_mobile: order_template.made_by_mobile,
+            made_by_email: order_template.made_by_email,
+            item_number: order_template.item_number, // 使用模板的商品编号
+            count: 1, // 你的订单数量
+        };
 
         assert_eq!(your_order.name, "Hacker in Rust");
-        assert_eq!(your_order.year, order_template.year);
-        assert_eq!(your_order.made_by_phone, order_template.made_by_phone);
-        assert_eq!(your_order.made_by_mobile, order_template.made_by_mobile);
-        assert_eq!(your_order.made_by_email, order_template.made_by_email);
-        assert_eq!(your_order.item_number, order_template.item_number);
+        assert_eq!(your_order.year, 2019);
+        assert_eq!(your_order.made_by_phone, false);
+        assert_eq!(your_order.made_by_mobile, false);
+        assert_eq!(your_order.made_by_email, true);
+        assert_eq!(your_order.item_number, 123);
         assert_eq!(your_order.count, 1);
     }
 }

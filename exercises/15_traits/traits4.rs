@@ -10,8 +10,7 @@ struct OtherSoftware;
 impl Licensed for SomeSoftware {}
 impl Licensed for OtherSoftware {}
 
-// TODO: Fix the compiler error by only changing the signature of this function.
-fn compare_license_types(software1: ???, software2: ???) -> bool {
+fn compare_license_types(software1: &impl Licensed, software2: &impl Licensed) -> bool {
     software1.licensing_info() == software2.licensing_info()
 }
 
@@ -25,11 +24,15 @@ mod tests {
 
     #[test]
     fn compare_license_information() {
-        assert!(compare_license_types(SomeSoftware, OtherSoftware));
+        let some_software = SomeSoftware;
+        let other_software = OtherSoftware;
+        assert!(compare_license_types(&some_software, &other_software));
     }
 
     #[test]
     fn compare_license_information_backwards() {
-        assert!(compare_license_types(OtherSoftware, SomeSoftware));
+        let some_software = SomeSoftware;
+        let other_software = OtherSoftware;
+        assert!(compare_license_types(&other_software, &some_software));
     }
 }

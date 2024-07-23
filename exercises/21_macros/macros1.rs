@@ -5,6 +5,6 @@ macro_rules! my_macro {
 }
 
 fn main() {
-    // TODO: Fix the macro call.
-    my_macro();
+    // Fix the macro call by adding parentheses
+    my_macro!();
 }
